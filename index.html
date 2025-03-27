@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Определение геолокации</title>
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(success, error);
+            } else {
+                alert("Геолокация не поддерживается вашим браузером.");
+            }
+        }
+
+        function success(position) {
+            let latitude = position.coords.latitude;
+            let longitude = position.coords.longitude;
+            let formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdzeLcCK7V9EOe7lgnvZbzvyaO3JRktVYQN8U0KNihrwmZ7bw/viewform?usp=pp_url"
+                        + "&entry.1922192372=" + latitude + "," + longitude;
+            window.location.href = formUrl;
+        }
+
+        function error() {
+            alert("Не удалось получить геопозицию.");
+        }
+
+        window.onload = getLocation;
+    </script>
+</head>
+<body>
+    <h2>Определение геолокации...</h2>
+</body>
+</html>
