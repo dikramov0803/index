@@ -16,8 +16,11 @@
         function success(position) {
             let latitude = position.coords.latitude;
             let longitude = position.coords.longitude;
+            let mapLink = `https://www.google.com/maps?q=${latitude},${longitude}`;
+            
             let formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdzeLcCK7V9EOe7lgnvZbzvyaO3JRktVYQN8U0KNihrwmZ7bw/viewform?usp=pp_url"
-                        + "&entry.1922192372=" + latitude + "," + longitude;
+                        + "&entry.1922192372=" + encodeURIComponent(mapLink);
+            
             window.location.href = formUrl;
         }
 
